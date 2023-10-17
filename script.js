@@ -33,10 +33,20 @@ inquirer.prompt([
   }
 ])
   .then(answers => {
+    createOutputFolder();  
     const svgContent = generateSVG(answers.text, answers.textColor, answers.shape, answers.shapeColor);
-    fs.writeFile('logo.svg', svgContent, (err) => {
+    fs.writeFile('./output/logo.svg', svgContent, (err) => {
       if (err) throw err;
       console.log('Logo created successfully!');
     });
   })
   .catch(error => console.log(error));
+
+  function createOutputFolder() {
+    const folderName = 'output';
+  
+    if (!fs.existsSync(folderName)) {
+      fs.mkdirSync(folderName);
+      console.log(`Created ${folderName} folder.`);
+    }
+  }
