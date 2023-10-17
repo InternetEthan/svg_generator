@@ -28,6 +28,7 @@ inquirer.prompt([
     message: 'Enter logo shape (example: circle, square):',
     choices: ['square', 'circle', 'triangle'],
     default: 'square'
+  },
   {
     type: 'input',
     name: 'shapeColor',
